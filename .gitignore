@@ -1,0 +1,21 @@
+### Eclipse
+bin/
+.settings/
+.classpath
+.project
+.metadata
+
+### Gradle
+.gradle
+build/
+gradle-app.setting
+!gradle-wrapper.jar
+
+
+### Java
+.class
+
+### Package File
+*.jar
+*.war
+*.ear
