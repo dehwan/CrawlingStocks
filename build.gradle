@@ -1,4 +1,8 @@
 apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+mainClassName = 'Crawling'
 
 repositories {
     jcenter()
@@ -8,7 +12,9 @@ repositories {
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.21'
     compile 'org.jsoup:jsoup:1.10.2'
-    compile 'mysql:mysql-connector-java;6.0.6'
+	compile 'org.mariadb.jdbc:mariadb-java-client:2.0.1'
+	compile 'org.mybatis:mybatis:3.4.4'
+	
 
     testCompile 'junit:junit:4.12'
     

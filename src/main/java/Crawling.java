@@ -8,6 +8,9 @@ public class Crawling {
 		
 		try {
 			fs.parsing();
+			
+//			DataHandler dh = new DataHandler();
+//			System.out.println(dh.isConnected());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

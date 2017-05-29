@@ -19,16 +19,13 @@ public class CrawlingForFootSell {
 	
 	private final String FS_URL = "https://footsell.com/g2/bbs/board.php?bo_table=m51";
 	
-	private List<Map<String, Object>> data;
-	private SimpleDateFormat hhmm;
 	private SimpleDateFormat dateParse;
 	
 	public CrawlingForFootSell() {
-		data = new ArrayList<Map<String, Object>>();
 		dateParse = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.KOREA);
 	}
 	
-	public void parsing() throws IOException, ParseException{
+	public void parsing() throws IOException, ParseException	{
 		Document doc = Jsoup.connect(FS_URL).get();
 		Elements els = doc.getElementById("list_table").getElementsByClass("list_table_row relative  ");
 		
@@ -67,17 +64,18 @@ public class CrawlingForFootSell {
 			shoes.put("user", user);
 			shoes.put("regDate", regDate);
 			
-			System.out.println(id); //상품명
+			System.out.println(id);
 			System.out.println(url);
-			System.out.println(name); //상품명
-			System.out.println(price); //가격
-			System.out.println(size); //사이즈
-			System.out.println(user); //풋셀 사용자명
-			System.out.println(regDate);
+			System.out.println(name);
+			System.out.println(price);
+			System.out.println(size);
 			System.out.println(status);
-			System.out.println("===============================");
+			System.out.println(user);
+			System.out.println(regDate);
+			System.out.println("==================================");
 		}
 		
 		//db insert
+		
 	}
 }
