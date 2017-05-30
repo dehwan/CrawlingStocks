@@ -4,8 +4,6 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import settings.SessionFactory;
-
 public class DataHandler {
 
 	private SqlSession session;
@@ -20,6 +18,10 @@ public class DataHandler {
 	
 	public void insertMarketData(Map<String, Object> shoes){
 		
+	}
+	
+	public SqlSession getSession(){
+		return session;
 	}
 
 }

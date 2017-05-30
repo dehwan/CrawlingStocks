@@ -1,4 +1,3 @@
-package settings;
 
 import java.io.IOException;
 
@@ -9,7 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class SessionFactory {
 	
-	private final String MYBATIS_RESOURCE = "settings/mybatis-config.xml";
+	private final String MYBATIS_RESOURCE = "com/nodot/sql/xml/mybatis-config.xml";
 	
 	private SqlSession session;
 	private SqlSessionFactory sqlSessionFactory;
