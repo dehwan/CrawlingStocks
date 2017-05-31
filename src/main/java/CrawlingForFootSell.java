@@ -42,18 +42,22 @@ public class CrawlingForFootSell {
 			
 			Elements priceSize = el.select("div.list_market_etc > div.left.list_market_price");
 			priceSize.select("span.list_market_size_mm").remove();
-//			int price = Integer.parseInt(priceSize.get(0).text().replaceAll(",", ""));
-//			String size = priceSize.get(1).text().replaceAll("\\p{Z}", "");
+			int price = Integer.parseInt(priceSize.get(0).text().replaceAll(",", ""));
+			String size = priceSize.get(1).text().replaceAll("\\p{Z}", "");
 			
-			int price = 100000;
-			String size = "265";
+//			int price = 100000;
+//			String size = "265";
 			
 			String user = el.select("span.member").text();
 			String[] timehhmm = el.select("span.list_table_dates").text().split(":");
 			int hh = Integer.parseInt(timehhmm[0]);
 			int mm = Integer.parseInt(timehhmm[1]);
 			String url = el.select("a.list_subject_a").attr("href");
-			String status = el.select("div.left.list_market_size").text().replaceAll("\\p{Z}", "");
+			String statusText = el.select("div.left.list_market_size").text().replaceAll("\\p{Z}", "");
+			int status = 1;
+			
+			if(statusText.equals("새제품")) status = 1;
+			else status = 0;
 			
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.HOUR_OF_DAY, hh);

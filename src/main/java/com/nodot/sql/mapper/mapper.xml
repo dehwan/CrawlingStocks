@@ -9,6 +9,7 @@
 	  		MS_URL,
 	  		MS_NAME,
 	  		MS_PRICE,
+	  		MS_IS_NEW,
 	  		MS_USER_NAME,
 	  		MS_REG_DATE 
 		) values
@@ -17,6 +18,7 @@
    	 	#{shoes.url},
    	 	#{shoes.name},
    	 	#{shoes.price},
+   	 	#{shoes.status},
    	 	#{shoes.user},
    	 	#{shoes.regDate}
   	</foreach>
