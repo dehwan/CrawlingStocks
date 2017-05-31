@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -16,7 +17,7 @@ public class DataHandler {
 		return session.getConnection().getSchema();
 	}
 	
-	public void insertMarketData(Map<String, Object> shoes){
+	public void insertMarketData(List<Map<String, Object>> stocks){
 		
 	}
 	

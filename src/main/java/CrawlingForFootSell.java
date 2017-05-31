@@ -19,13 +19,16 @@ public class CrawlingForFootSell {
 	
 	private final String FS_URL = "https://footsell.com/g2/bbs/board.php?bo_table=m51";
 	
+	private List<Map<String, Object>> stocks;
+	
 	private SimpleDateFormat dateParse;
 	
 	public CrawlingForFootSell() {
+		stocks = new ArrayList<Map<String, Object>>();
 		dateParse = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.KOREA);
 	}
 	
-	public void parsing() throws IOException, ParseException	{
+	public List<Map<String, Object>> parsing() throws IOException, ParseException	{
 		Document doc = Jsoup.connect(FS_URL).get();
 		Elements els = doc.getElementById("list_table").getElementsByClass("list_table_row relative  ");
 		
@@ -39,8 +42,11 @@ public class CrawlingForFootSell {
 			
 			Elements priceSize = el.select("div.list_market_etc > div.left.list_market_price");
 			priceSize.select("span.list_market_size_mm").remove();
-			int price = Integer.parseInt(priceSize.get(0).text().replaceAll(",", ""));
-			String size = priceSize.get(1).text().replaceAll("\\p{Z}", "");
+//			int price = Integer.parseInt(priceSize.get(0).text().replaceAll(",", ""));
+//			String size = priceSize.get(1).text().replaceAll("\\p{Z}", "");
+			
+			int price = 100000;
+			String size = "265";
 			
 			String user = el.select("span.member").text();
 			String[] timehhmm = el.select("span.list_table_dates").text().split(":");
@@ -64,18 +70,11 @@ public class CrawlingForFootSell {
 			shoes.put("user", user);
 			shoes.put("regDate", regDate);
 			
-			System.out.println(id);
-			System.out.println(url);
-			System.out.println(name);
-			System.out.println(price);
-			System.out.println(size);
-			System.out.println(status);
-			System.out.println(user);
-			System.out.println(regDate);
-			System.out.println("==================================");
+			stocks.add(shoes);
+				
 		}
-		
-		//db insert
+		return stocks;
+
 		
 	}
 }

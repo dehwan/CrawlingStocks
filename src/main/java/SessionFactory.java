@@ -18,7 +18,7 @@ public class SessionFactory {
 	}
 	
 	public SqlSession getSession(){
-		session = sqlSessionFactory.openSession();
+		session = sqlSessionFactory.openSession(true);
 		return session;
 	}
 	
