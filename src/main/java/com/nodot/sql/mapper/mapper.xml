@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="StocksMapper">
-  <insert id="insertTest" parameterType="List">
+  <insert id="setMarketData" parameterType="java.util.List">
 	  	insert into MARKET_SHOES(
 	  		MS_ID,
 	  		MS_URL,
@@ -12,17 +12,13 @@
 	  		MS_USER_NAME,
 	  		MS_REG_DATE 
 		) values
-  	<foreach collection="stocks" item="shoes">
-    	 (
-    	 	#{shoes.id},
-    	 	#{shoes.url},
-    	 	#{shoes.name},
-    	 	#{shoes.price},
-    	 	#{shoes.size},
-    	 	#{shoes.status},
-    	 	#{shoes.user},
-    	 	#{shoes.regDate}
-    	 )
+  	<foreach collection="list" item="shoes" separator="),(" open="(" close=")">
+   	 	#{shoes.id},
+   	 	#{shoes.url},
+   	 	#{shoes.name},
+   	 	#{shoes.price},
+   	 	#{shoes.user},
+   	 	#{shoes.regDate}
   	</foreach>
   </insert>
 </mapper>
