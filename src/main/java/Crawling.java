@@ -7,16 +7,17 @@ public class Crawling {
 	
 	public static void main(String args[]){
 		
+		SqlSession session = null;
+		
 		try {
-			
+			session = new DataHandler().getSession();
 			List<Map<String,Object>> stocks = new CrawlingForFootSell().parsing();
-			
-			SqlSession session = new DataHandler().getSession();
-			
 			session.insert("StocksMapper.setMarketData",stocks);
-			session.close();
 		} catch (Exception e) {
 			e.printStackTrace();
+			session.rollback();
+		} finally {
+			session.close();
 		}
 	}
 }
