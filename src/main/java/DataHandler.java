@@ -9,19 +9,16 @@ public class DataHandler {
 
 	private SqlSession session;
 	
-	public DataHandler() throws IOException {
-		session = new SessionFactory().getSession();
-	}
-	
 	public String isConnected() throws SQLException{
 		return session.getConnection().getSchema();
 	}
 	
-	public void insertMarketData(List<Map<String, Object>> stocks){
-		
-	}
-	
 	public SqlSession getSession(){
+		try {
+			session = new SessionFactory().getSession();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return session;
 	}
 

@@ -2,18 +2,16 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class CrawlingForFootSell {
@@ -45,6 +43,17 @@ public class CrawlingForFootSell {
 			priceSize.select("span.list_market_size_mm").remove();
 			int price = Integer.parseInt(priceSize.get(0).text().replaceAll(",", ""));
 			String size = priceSize.get(1).text().replaceAll("\\p{Z}", "");
+			
+			System.out.println(size);
+			
+			Pattern pattern = Pattern.compile("^(?:(\\d+)(?:[,. ]|))*$");
+			Matcher matcher = pattern.matcher(size);
+			
+			while(matcher.find()){
+				System.out.println(matcher.groupCount());
+			}
+			
+			
 			
 			String user = el.select("span.member").text();
 			String url = el.select("a.list_subject_a").attr("href");
