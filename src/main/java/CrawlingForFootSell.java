@@ -44,17 +44,6 @@ public class CrawlingForFootSell {
 			int price = Integer.parseInt(priceSize.get(0).text().replaceAll(",", ""));
 			String size = priceSize.get(1).text().replaceAll("\\p{Z}", "");
 			
-			System.out.println(size);
-			
-			Pattern pattern = Pattern.compile("^(?:(\\d+)(?:[,. ]|))*$");
-			Matcher matcher = pattern.matcher(size);
-			
-			while(matcher.find()){
-				System.out.println(matcher.groupCount());
-			}
-			
-			
-			
 			String user = el.select("span.member").text();
 			String url = el.select("a.list_subject_a").attr("href");
 			String statusText = el.select("div.left.list_market_size").text().replaceAll("\\p{Z}", "");
